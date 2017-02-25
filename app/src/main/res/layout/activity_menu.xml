@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:weightSum="1">
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <ImageButton
+        android:layout_width="196dp"
+        android:layout_height="167dp"
+        android:src="@drawable/add7"
+        android:id="@+id/btinsert"
+        android:background="#00ffffff" />
+
+    <ImageButton
+        android:layout_width="154dp"
+        android:layout_marginTop="4dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/update13"
+        android:id="@+id/btnupdate"
+        android:background="#00ffffff" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <TextView
+        android:text="Add"
+        android:layout_marginStart="75dp"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tadd" />
+
+        <TextView
+            android:text="Update"
+            android:layout_marginStart="115dp"
+            android:textSize="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tup"
+            android:layout_weight="1" />
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content"
+    android:weightSum="1">
+    <ImageButton
+        android:layout_width="169dp"
+        android:layout_height="167dp"
+        android:layout_marginStart="15dp"
+        android:src="@drawable/search9"
+        android:id="@+id/btsearch"
+        android:background="#00ffffff" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
+        android:src="@drawable/delete3"
+        android:id="@+id/btndelete"
+        android:background="#00ffffff"
+        android:layout_weight="0.31" />
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Search"
+            android:layout_marginStart="60dp"
+            android:textSize="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tsear" />
+
+        <TextView
+            android:text="Delete"
+            android:layout_marginStart="100dp"
+            android:textSize="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tdel"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
+</LinearLayout>
