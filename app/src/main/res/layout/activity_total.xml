@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_third"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,33 +8,31 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.vyas.myapplication.Total"
-    android:background="@android:color/darker_gray">
+    android:background="@color/darker_gray"
+    android:orientation="vertical">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
+            android:id="@+id/lineartop"
             android:layout_height="wrap_content">
-
-
-
             <Spinner
-                android:layout_width="129dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
                 android:id="@+id/month" />
 
             <Spinner
-                android:layout_width="126dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
                 android:id="@+id/year" />
 
             <Button
-                android:text="SEARCH"
-                android:layout_width="match_parent"
+                android:text="@string/search"
+                android:layout_width="wrap_content"
                 android:background="@drawable/border"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnsearch" />
 
@@ -45,37 +42,39 @@
 
         <GridView
             android:id="@+id/viewall"
+            android:layout_below="@id/lineartop"
             android:layout_width="match_parent"
-            android:layout_height="377dp"
-            android:numColumns="3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" >
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/linearbottom"
+            android:numColumns="3">
+
         </GridView>
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:id="@+id/linearbottom"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="1">
+            android:layout_alignParentBottom="true">
             <Button
-                android:text="Total"
+                android:text="@string/total"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/border"
                 android:id="@+id/btntotal"
-                android:layout_weight="0.82" />
+                android:layout_weight="1" />
 
             <GridView
                 android:layout_width="213dp"
-                android:layout_height="match_parent"
-                android:id="@+id/totalvalue" />
+                android:layout_height="wrap_content"
+                android:id="@+id/totalvalue"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
-</ScrollView>
+
 

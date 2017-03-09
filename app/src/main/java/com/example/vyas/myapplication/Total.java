@@ -1,67 +1,62 @@
 package com.example.vyas.myapplication;
 
-import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.GridView;
-import android.view.View.OnClickListener;
-import android.widget.Spinner;
-import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
+import android.widget.GridView;
+
+import android.widget.Spinner;
+
+
+
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Locale;
+
 
 public class Total extends AppCompatActivity {
 
 
 ;
-    Button btntotal;
-    Button btnsearch;
 
-    GridView totalvalue;
-    GridView viewall;
-    Spinner spinner;
-    Spinner spinner1;
-    String text;
-    String text1;
+    private GridView totalvalue;
+    private GridView viewall;
+    private String month;
+    private String year;
 
-    ArrayList<String> view=null;
-    ArrayAdapter<String> x = null;
-    ArrayList<String> view1=null;
-    ArrayAdapter<String> x1 = null;
-
-    private ArrayList<HashMap<String, String>> list;
+    private ArrayList<String> viewdata=null;
+    private ArrayAdapter<String> x = null;
+    private ArrayList<String> viewtotal=null;
+    private ArrayAdapter<String> x1 = null;
 
 
 
-    MyDB db;
+
+
+    private MyDB db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_total);
-        view = new ArrayList<String>();
-        x = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,view);
-        view1 = new ArrayList<String>();
-        x1 = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,view1);
+        viewdata = new ArrayList<>();
+        x = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, viewdata);
+        viewtotal = new ArrayList<>();
+        x1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, viewtotal);
         init();
+
+
+
     }
 
-    public void init(){
-        spinner = (Spinner) findViewById(R.id.month);
-        spinner1 = (Spinner) findViewById(R.id.year);
-        btnsearch=(Button)findViewById(R.id.btnsearch);
-        btntotal=(Button)findViewById(R.id.btntotal);
+    private void init(){
+        Spinner spinnermonth = (Spinner) findViewById(R.id.month);
+        Spinner spinneryear = (Spinner) findViewById(R.id.year);
+        Button btnsearch = (Button) findViewById(R.id.btnsearch);
+        Button btntotal = (Button) findViewById(R.id.btntotal);
 
         viewall= (GridView)findViewById(R.id.viewall);
         totalvalue= (GridView)findViewById(R.id.totalvalue);
@@ -74,13 +69,49 @@ public class Total extends AppCompatActivity {
                 R.array.month_array, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        spinnermonth.setAdapter(adapter);
 
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
                 R.array.year_array, android.R.layout.simple_spinner_item);
 
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner1.setAdapter(adapter1);
+        spinneryear.setAdapter(adapter1);
+
+        spinnermonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                month=parent.getItemAtPosition(position).toString();
+                viewdata.clear();
+                viewtotal.clear();
+                totalvalue.setAdapter(x1);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+
+            }
+        });
+
+        spinneryear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                year=parent.getItemAtPosition(position).toString();
+                viewdata.clear();
+                viewtotal.clear();
+                totalvalue.setAdapter(x1);
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
     }
@@ -88,27 +119,25 @@ public class Total extends AppCompatActivity {
 
 
 
-    public View.OnClickListener dbButtonsListener = new View.OnClickListener() {
+    private final View.OnClickListener dbButtonsListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.btnsearch:
-                    text = spinner.getSelectedItem().toString();
-                    text1=spinner1.getSelectedItem().toString();
-                    Cursor cursor = db.getAllRecords(text+"-"+text1);
-                    view.clear();
+                    Cursor cursor = db.getAllRecords(month+"-"+year);
+                    viewdata.clear();
                     for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-                        view.add(cursor.getString(cursor.getColumnIndex(MyDB.ACTIVITY)) + "");
-                        view.add(cursor.getString(cursor.getColumnIndex(MyDB.DATE)) + "");
-                        view.add(cursor.getDouble(cursor.getColumnIndex(MyDB.AMOUNT)) + "");
+                        viewdata.add(cursor.getString(cursor.getColumnIndex(MyDB.ACTIVITY)) + "");
+                        viewdata.add(cursor.getString(cursor.getColumnIndex(MyDB.DATE)) + "");
+                        viewdata.add(cursor.getDouble(cursor.getColumnIndex(MyDB.AMOUNT)) + "");
                     }
                     viewall.setAdapter(x);
                     break;
                 case R.id.btntotal:
-                    Cursor cursor1 = db.getTotalSum(text+"-"+text1);
-                    view1.clear();
+                    Cursor cursor1 = db.getTotalSum(month+"-"+year);
+                    viewtotal.clear();
                     for(cursor1.moveToFirst(); !cursor1.isAfterLast(); cursor1.moveToNext()){
-                        view1.add(cursor1.getDouble(0)+"");
+                        viewtotal.add(cursor1.getDouble(0)+"");
                     }
                     totalvalue.setAdapter(x1);
                     break;
@@ -120,14 +149,12 @@ public class Total extends AppCompatActivity {
     protected void onStart()  {
         super.onStart();
         db.openDB();
+
     }
 
     protected void onStop() {
         super.onStop();
         db.closeDB();
-    }
-    private String getValue(EditText etfname) {
-        return etfname.getText().toString().trim();
     }
 
 }

@@ -4,16 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
 import android.widget.Button;
-import android.widget.ImageButton;
 
 public class Menu extends AppCompatActivity {
 
-    ImageButton btinsert;
-    ImageButton btsearch;
-    ImageButton btnupdate;
-    ImageButton btndelete;
-    MyDB db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,19 +16,22 @@ public class Menu extends AppCompatActivity {
         init();
     }
 
-    public void init(){
-        btinsert=(ImageButton)findViewById(R.id.btinsert);
-        btsearch=(ImageButton)findViewById(R.id.btsearch);
-        btnupdate=(ImageButton)findViewById(R.id.btnupdate);
-        btndelete=(ImageButton)findViewById(R.id.btndelete);
+    private void init(){
+        Button btinsert = (Button) findViewById(R.id.btinsert);
+        Button btsearch = (Button) findViewById(R.id.btsearch);
+        Button btnupdate = (Button) findViewById(R.id.btnupdate);
+        Button btndelete = (Button) findViewById(R.id.btndelete);
+        //ImageView view=(ImageView) findViewById(R.id.imageView);
+        //.setOnClickListener(dbButtonsListener);
         btnupdate.setOnClickListener(dbButtonsListener);
         btndelete.setOnClickListener(dbButtonsListener);
         btinsert.setOnClickListener(dbButtonsListener);
         btsearch.setOnClickListener(dbButtonsListener);
-       // db= new MyDB(getApplicationContext());
+
+
     }
 
-    public View.OnClickListener dbButtonsListener = new View.OnClickListener() {
+    private final View.OnClickListener dbButtonsListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
@@ -61,15 +59,6 @@ public class Menu extends AppCompatActivity {
             }
         }
     };
-//    @Override
-//    protected void onStart()  {
-//        super.onStart();
-//        db.openDB();
-//    }
-//
-//    protected void onStop() {
-//        super.onStop();
-//        db.closeDB();
-//    }
+
 
 }

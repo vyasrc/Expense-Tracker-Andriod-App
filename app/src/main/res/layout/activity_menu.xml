@@ -1,94 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
-    android:weightSum="1">
+    android:background="@color/darker_gray"
+    android:weightSum="1"
+    android:gravity="center"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
     <LinearLayout
-    android:layout_width="wrap_content"
-    android:orientation="horizontal"
-    android:layout_height="wrap_content">
-    <ImageButton
-        android:layout_width="196dp"
-        android:layout_height="167dp"
-        android:src="@drawable/add7"
-        android:id="@+id/btinsert"
-        android:background="#00ffffff" />
-
-    <ImageButton
-        android:layout_width="154dp"
-        android:layout_marginTop="4dp"
-        android:layout_height="match_parent"
-        android:src="@drawable/update13"
-        android:id="@+id/btnupdate"
-        android:background="#00ffffff" />
-</LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <TextView
-        android:text="Add"
-        android:layout_marginStart="75dp"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/lineartop"
         android:layout_height="wrap_content"
-        android:id="@+id/tadd" />
-
-        <TextView
-            android:text="Update"
-            android:layout_marginStart="115dp"
-            android:textSize="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tup"
-            android:layout_weight="1" />
-    </LinearLayout>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:orientation="horizontal"
-    android:layout_height="wrap_content"
-    android:weightSum="1">
-    <ImageButton
-        android:layout_width="169dp"
-        android:layout_height="167dp"
-        android:layout_marginStart="15dp"
-        android:src="@drawable/search9"
-        android:id="@+id/btsearch"
-        android:background="#00ffffff" />
-
-    <ImageButton
+        android:orientation="horizontal">
+    <Button
+        android:text="@string/insert"
+        android:textSize="18sp"
+        android:textColor="@color/brown"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginStart="15dp"
-        android:src="@drawable/delete3"
-        android:id="@+id/btndelete"
-        android:background="#00ffffff"
-        android:layout_weight="0.31" />
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:background="@drawable/circle"
+        android:id="@+id/btinsert" />
 
+    <Button
+        android:text="@string/update"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:textColor="@color/brown"
+        android:layout_marginStart="7dp"
+        android:background="@drawable/circle"
+        android:id="@+id/btnupdate" />
 </LinearLayout>
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/lineartop"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <Button
+        android:text="@string/search"
+        android:textSize="18sp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="Search"
-            android:layout_marginStart="60dp"
-            android:textSize="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tsear" />
+        android:layout_height="100dp"
+        android:layout_marginTop="7dp"
+        android:textColor="@color/brown"
+        android:layout_weight="1"
+        android:background="@drawable/circle"
+        android:id="@+id/btsearch" />
 
-        <TextView
-            android:text="Delete"
-            android:layout_marginStart="100dp"
-            android:textSize="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tdel"
-            android:layout_weight="1" />
+    <Button
+        android:text="@string/delete"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:textColor="@color/brown"
+        android:layout_marginTop="7dp"
+        android:layout_weight="1"
+        android:layout_marginStart="7dp"
+        android:background="@drawable/circle"
+        android:id="@+id/btndelete" />
     </LinearLayout>
 
-
-</LinearLayout>
+</RelativeLayout>

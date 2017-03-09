@@ -10,14 +10,13 @@ import android.widget.Toast;
 
 public class Insert extends AppCompatActivity {
 
-    EditText etactivity;
-    EditText etamount;
-    Button btninsert;
-    TextInputLayout tilac,tilam;
-    int flag;
+    private EditText etactivity;
+    private EditText etamount;
+    private TextInputLayout tilac;
+    private TextInputLayout tilam;
 
 
-    MyDB db;
+    private MyDB db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +24,10 @@ public class Insert extends AppCompatActivity {
         init();
     }
 
-    public void init(){
+    private void init(){
         etactivity= (EditText)findViewById(R.id.etactivity);
         etamount= (EditText)findViewById(R.id.etamount);
-        btninsert=(Button)findViewById(R.id.btninsert);
+        Button btninsert = (Button) findViewById(R.id.btninsert);
         btninsert.setOnClickListener(dbButtonsListener);
         tilac=(TextInputLayout)findViewById(R.id.input_etactivity);
         tilam=(TextInputLayout)findViewById(R.id.input_etamount);
@@ -38,37 +37,37 @@ public class Insert extends AppCompatActivity {
         db= new MyDB(getApplicationContext());
     }
 
-    public View.OnClickListener dbButtonsListener = new View.OnClickListener() {
+    private final View.OnClickListener dbButtonsListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.btninsert:
                         String act=getValue(etactivity);
                         String am=getValue(etamount);
-                        flag=0;
+                        int flag = 0;
                         if (act.compareTo("")==0 && am.compareTo("")!=0){
                             tilac.setErrorEnabled(true);
                             tilac.setError("Empty Input");
-                            flag=1;
+                            flag =1;
                         }if (act.compareTo("")!=0 && am.compareTo("")==0){
                             tilam.setErrorEnabled(true);
                             tilam.setError("Empty Input");
-                            flag=1;
+                            flag =1;
                         }if (act.compareTo("")==0 && am.compareTo("")==0){
                             tilac.setErrorEnabled(true);
                             tilac.setError("Empty Input");
                         tilam.setErrorEnabled(true);
                         tilam.setError("Empty Input");
-                            flag=1;
+                            flag =1;
                         }
-                        if (flag==0) {
+                        if (flag ==0) {
                             long resultinsert = db.insert(act, Double.valueOf(am));
                             if (resultinsert == -1) {
                                 Toast.makeText(Insert.this, "Error : Activity name already exist",
                                         Toast.LENGTH_SHORT).show();
 
                             } else {
-                                Toast.makeText(Insert.this, "Successfully Inserted" + resultinsert,
+                                Toast.makeText(Insert.this, "Successfully Inserted" ,
                                         Toast.LENGTH_SHORT).show();
                             }
                         }

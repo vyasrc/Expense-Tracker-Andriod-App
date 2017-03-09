@@ -9,17 +9,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText user, pass;
-    Button btncreate, btnlogin,btnchange;
-    TextInputLayout tilu,tilp;
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String Username = "username";
-    public static final String Password = "password";
-    SharedPreferences sharedpreferences;
+    private EditText user;
+    private EditText pass;
+    private TextInputLayout tilu;
+    private TextInputLayout tilp;
+    private static final String MyPREFERENCES = "MyPrefs" ;
+    private static final String Username = "username";
+    private static final String Password = "password";
+    private SharedPreferences sharedpreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         user = (EditText) findViewById(R.id.user);
         pass = (EditText) findViewById(R.id.pass);
-        btncreate = (Button) findViewById(R.id.btncreate);
-        btnlogin = (Button) findViewById(R.id.btnlogin);
-        btnchange = (Button) findViewById(R.id.btnchange);
+        Button btncreate = (Button) findViewById(R.id.btncreate);
+        Button btnlogin = (Button) findViewById(R.id.btnlogin);
+        Button btnchange = (Button) findViewById(R.id.btnchange);
         btncreate.setOnClickListener(dbButtonsListener);
         btnlogin.setOnClickListener(dbButtonsListener);
         btnchange.setOnClickListener(dbButtonsListener);
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         return etfname.getText().toString().trim();
     }
 
-    public View.OnClickListener dbButtonsListener = new View.OnClickListener() {
+    private final View.OnClickListener dbButtonsListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     if (flag==0) {
                         editor.putString(Username, sc);
                         editor.putString(Password, pc);
-                        editor.commit();
+                        editor.apply();
                         Intent c = new Intent(MainActivity.this, Menu.class);
                         startActivity(c);
                         finish();

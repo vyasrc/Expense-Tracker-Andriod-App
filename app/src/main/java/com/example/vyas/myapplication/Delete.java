@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -14,47 +14,30 @@ import java.util.ArrayList;
 
 public class Delete extends AppCompatActivity {
 
-    EditText delactivity;
-    //EditText delmonth;
-    Button btndelete;
 
-
-    ArrayList<String> lables = new ArrayList<String>();
-    ArrayAdapter<CharSequence> adapter;
-    ArrayAdapter<CharSequence> adapter1;
-    ArrayAdapter<String>
+    private ArrayList<String> lables = new ArrayList<>();
+    private ArrayAdapter<String>
             dataAdapter;
 
 
-    String m;
-    String y;
-    String act;
-    Spinner spm;
-    Spinner spy;
-    Spinner spact;
+    private String m,y, act;
+    private Spinner spact;
 
-    ArrayList<String> view=null;
-    ArrayAdapter<String> x = null;
-    ArrayList<String> view1=null;
-    ArrayAdapter<String> x1 = null;
 
-    MyDB db;
+    private MyDB db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete);
-        view = new ArrayList<String>();
-        x = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,view);
-        view1 = new ArrayList<String>();
-        x1 = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,view1);
+
 
     }
 
-    public void init(){
-        spm = (Spinner) findViewById(R.id.month);
-        spy = (Spinner) findViewById(R.id.year);
+    private void init(){
+        Spinner spm = (Spinner) findViewById(R.id.month);
+        Spinner spy = (Spinner) findViewById(R.id.year);
         spact = (Spinner) findViewById(R.id.activity);
-        btndelete=(Button)findViewById(R.id.btndelete);
+        Button btndelete = (Button) findViewById(R.id.btndelete);
         btndelete.setOnClickListener(dbButtonsListener);
         spm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -71,8 +54,8 @@ public class Delete extends AppCompatActivity {
                 // ArrayAdapter<String>
 //                        dataAdapter = new ArrayAdapter<String>(getApplicationContext(),
 //                        android.R.layout.simple_spinner_item, lables);
-                dataAdapter = new ArrayAdapter<String>(Delete.this,
-                        R.layout.spinnerview,R.id.txt_name,lables);
+                dataAdapter = new ArrayAdapter<>(Delete.this,
+                        R.layout.spinnerview, R.id.txt_name, lables);
 
 //                dataAdapter
 //                        .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -87,7 +70,7 @@ public class Delete extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                return;
+
 
             }
         });
@@ -109,8 +92,8 @@ public class Delete extends AppCompatActivity {
 //              dataAdapter = new ArrayAdapter<String>(getApplicationContext(),
 //                      android.R.layout.simple_spinner_item, lables);
 
-                dataAdapter = new ArrayAdapter<String>(Delete.this,
-                        R.layout.spinnerview,R.id.txt_name,lables);
+                dataAdapter = new ArrayAdapter<>(Delete.this,
+                        R.layout.spinnerview, R.id.txt_name, lables);
 
 //              dataAdapter
 //                      .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -125,19 +108,19 @@ public class Delete extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                return;
+
             }
         });
 
        // ArrayAdapter<CharSequence>
-                adapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.month_array, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spm.setAdapter(adapter);
 
         //ArrayAdapter<CharSequence>
-                adapter1 = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
                 R.array.year_array, android.R.layout.simple_spinner_item);
 
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -150,7 +133,7 @@ public class Delete extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                return;
+
             }
         });
     }
@@ -158,7 +141,7 @@ public class Delete extends AppCompatActivity {
 //    String text;
 //    String text1;
 
-    public View.OnClickListener dbButtonsListener = new View.OnClickListener() {
+    private final View.OnClickListener dbButtonsListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
@@ -186,9 +169,6 @@ public class Delete extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         db.closeDB();
-    }
-    private String getValue(EditText etfname) {
-        return etfname.getText().toString().trim();
     }
 
 }

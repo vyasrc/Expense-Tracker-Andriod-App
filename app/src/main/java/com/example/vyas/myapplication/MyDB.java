@@ -4,25 +4,25 @@ package com.example.vyas.myapplication;
         import android.content.Context;
         import android.database.Cursor;
         import android.database.sqlite.SQLiteDatabase;
-        import android.database.sqlite.SQLiteDatabaseLockedException;
-        import android.database.sqlite.SQLiteOpenHelper;
-        import android.util.StringBuilderPrinter;
 
-        import java.sql.Date;
+        import android.database.sqlite.SQLiteOpenHelper;
+
+
+
         import java.text.SimpleDateFormat;
         import java.util.ArrayList;
         import java.util.Calendar;
-        import java.util.List;
 
-/**
- * Created by VYAS on 27/01/2017.
- */
-        public class MyDB extends SQLiteOpenHelper {
+
+
+  //Created by VYAS on 27/01/2017.
+
+class MyDB extends SQLiteOpenHelper {
             private static final String DBNAME="mydb.db";
             private static final int VERSION=1;
 
 
-            public static final String TABLE_NAME="account_book";
+            private static final String TABLE_NAME="account_book";
             public static final String DATE="date";
             public static final String ACTIVITY="activity";
             public static final String AMOUNT="amount";
@@ -86,6 +86,7 @@ package com.example.vyas.myapplication;
                     values.put(ACTIVITY, activity);
                     values.put(AMOUNT, amount);
                 }
+                count.close();
          return MyD.insert(TABLE_NAME, null, values);
     }
 
@@ -126,7 +127,7 @@ package com.example.vyas.myapplication;
     }
 
     public ArrayList<String> getAllLabels(String searchString){
-        ArrayList<String> labels = new ArrayList<String>();
+        ArrayList<String> labels = new ArrayList<>();
         System.out.println(searchString);
 
         // Select All Query
@@ -142,12 +143,8 @@ package com.example.vyas.myapplication;
                 labels.add(cursor.getString(0));
             } while (cursor.moveToNext());
 
-            for (int j = 0; j < labels.size(); j++) {
-                System.out.print(labels.get(j));
-            }
-
         }
-
+            cursor.close();
         return labels;
     }
 

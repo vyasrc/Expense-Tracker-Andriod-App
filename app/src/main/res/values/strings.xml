@@ -1,8 +1,21 @@
 <resources>
-    <string name="app_name">Account Book</string>
-    <string name="title_activity_fourth">Fourth</string>
-    <string name="hello_round">Hello Round World!</string>
-    <string name="hello_square">Hello Square World!</string>
+    <string name="app_name">Expense Tracker</string>
+    <string name="update">Update</string>
+    <string name="currpass">CURRENT PASSWORD</string>
+    <string name="act">ACTIVITY</string>
+    <string name="user">USERNAME</string>
+    <string name="search">Search</string>
+    <string name="curram">Current Amount : </string>
+    <string name="newpass">NEW PASSWORD</string>
+    <string name="delete">Delete</string>
+    <string name="amount">AMOUNT</string>
+    <string name="insert">insert</string>
+    <string name="pass">PASSWORD</string>
+    <string name="chngpass">Change Password</string>
+    <string name="login">Existing user? login</string>
+    <string name="create">New user? create</string>
+    <string name="total">Total</string>
+    <string name="newamount">NEW AMOUNT</string>
     <string-array name="month_array">
         <item>Jan</item>
         <item>Feb</item>

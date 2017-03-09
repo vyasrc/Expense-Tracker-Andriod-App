@@ -1,7 +1,7 @@
 package com.example.vyas.myapplication;
 
 import android.content.Context;
-import android.content.Intent;
+
 import android.content.SharedPreferences;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -13,13 +13,11 @@ import android.widget.Toast;
 
 public class ChangePass extends AppCompatActivity {
 
-    EditText currpass, newpass;
-    Button btnchange;
-    TextInputLayout tilc,tiln;
-    int flag;
-    public static final String MyPREFERENCES = "MyPrefs";
-    public static final String Password = "password";
-    SharedPreferences sharedpreferences;
+    private EditText currpass, newpass;
+    private TextInputLayout tilc,tiln;
+    private static final String MyPREFERENCES = "MyPrefs";
+    private static final String Password = "password";
+    private SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +26,7 @@ public class ChangePass extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         currpass = (EditText) findViewById(R.id.currpass);
         newpass = (EditText) findViewById(R.id.newpass);
-        btnchange = (Button) findViewById(R.id.btnchange);
+        Button btnchange = (Button) findViewById(R.id.btnchange);
         btnchange.setOnClickListener(dbButtonsListener);
         tilc = (TextInputLayout)findViewById(R.id.input_currpass);
         tiln = (TextInputLayout)findViewById(R.id.input_newpass);
@@ -39,34 +37,34 @@ public class ChangePass extends AppCompatActivity {
         return etfname.getText().toString().trim();
     }
 
-    public View.OnClickListener dbButtonsListener = new View.OnClickListener() {
+    private final View.OnClickListener dbButtonsListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.btnchange:
                     String cp=getValue(currpass);
                     String np = getValue(newpass);
-                     flag=0;
+                    int flag = 0;
                     if (np.compareTo("")==0 && cp.compareTo("")==0){
                         tilc.setErrorEnabled(true);
                         tilc.setError("Empty Input");
                         tiln.setErrorEnabled(true);
                         tiln.setError("Empty Input");
-                        flag=1;
+                        flag =1;
 //                        Toast.makeText(ChangePass.this, "Error: Current Password not inserted",
 //                                Toast.LENGTH_SHORT).show();
                     }
                     if (np.compareTo("")!=0 && cp.compareTo("")==0){
                         tilc.setErrorEnabled(true);
                         tilc.setError("Empty Input");
-                        flag=1;
+                        flag =1;
 //                        Toast.makeText(ChangePass.this, "Error: Current Password not inserted",
 //                                Toast.LENGTH_SHORT).show();
                     }
                     if (np.compareTo("")==0 && cp.compareTo("")!=0){
                         tiln.setErrorEnabled(true);
                         tiln.setError("Empty Input");
-                        flag=1;
+                        flag =1;
 //                            Toast.makeText(ChangePass.this, "Error: New Password not inserted",
 //                                    Toast.LENGTH_SHORT).show();
                     }
@@ -77,20 +75,20 @@ public class ChangePass extends AppCompatActivity {
                          tilc.setError("Wrong password");
                          tiln.setErrorEnabled(true);
                          tiln.setError("Empty Input");
-                         flag=1;
+                         flag =1;
 
                     }if (sharedpreferences.getString(Password, "").compareTo(cp) != 0 &&
                              np.compareTo("")!=0 && cp.compareTo("")!=0) {
                          tilc.setErrorEnabled(true);
                          tilc.setError("Wrong password");
-                         flag=1;
+                         flag =1;
 
                     }
 
-                    if (flag==0) {
+                    if (flag ==0) {
                          SharedPreferences.Editor editor = sharedpreferences.edit();
                          editor.putString(Password, np);
-                         editor.commit();
+                         editor.apply();
                          Toast.makeText(ChangePass.this, "Changed Password Successfully", Toast.LENGTH_SHORT).show();
                        // Toast.makeText(ChangePass.this, "Incorrect password", Toast.LENGTH_SHORT).show();
                     }

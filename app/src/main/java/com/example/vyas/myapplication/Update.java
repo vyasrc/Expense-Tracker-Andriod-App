@@ -9,85 +9,80 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
+
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-import static android.R.attr.x;
+
+
+
 
 public class Update extends AppCompatActivity {
 
-    Button btnupdate;
-    EditText upamount;
-    TextView curram;
-    TextView currview;
-   ArrayList<String> lables = new ArrayList<String>();
-    ArrayAdapter<CharSequence> adapter;
-    ArrayAdapter<CharSequence> adapter1;
-    ArrayAdapter<String>
+    private EditText upamount;
+    private TextView curram;
+    private ArrayList<String> lables = new ArrayList<>();
+    private ArrayAdapter<String>
             dataAdapter;
-    ArrayList<String> amount=new ArrayList<String>();
-    ArrayAdapter<String> x=null;
 
 
-    TextInputLayout tilam;
-     String m;
-     String y;
-    String act;
-    Spinner spm;
-    Spinner spy;
-    Spinner spact;
-    String res;
-    Double curr;
+
+    private TextInputLayout tilam;
+     private String m;
+     private String y;
+    private String act;
+    private Spinner spact;
+
+    private Double curr;
 
 
 
 
-    MyDB db;
+    private MyDB db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
-       // x=new ArrayAdapter<String>(Update.this,android.R.layout.simple_list_item_1,amount);
+
 
 
     }
 
-    public void init(){
-        spm = (Spinner) findViewById(R.id.month);
-        spy = (Spinner) findViewById(R.id.year);
+    private void init(){
+        Spinner spm = (Spinner) findViewById(R.id.month);
+        Spinner spy = (Spinner) findViewById(R.id.year);
         spact = (Spinner) findViewById(R.id.activity);
-//        curram=(TextView)findViewById(R.id.curram);
+        curram=(TextView)findViewById(R.id.curram);
         upamount= (EditText)findViewById(R.id.upamount);
-        btnupdate=(Button)findViewById(R.id.btnupdate);
-        currview=(TextView)findViewById(R.id.currview);
+        Button btnupdate = (Button) findViewById(R.id.btnupdate);
+
         btnupdate.setOnClickListener(dbButtonsListener);
         tilam=(TextInputLayout)findViewById(R.id.input_upamount);
-       //x=new ArrayAdapter<String>(Update.this,android.R.layout.simple_list_item_1,amount);
+
 
         spm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 m=parent.getItemAtPosition(position).toString();
                 lables = db.getAllLabels(m+"-"+y);
+                curr=0.0;
+                curram.setText(" "+curr+"");
                 System.out.print(lables.size());
                 for (int j = 0; j < lables.size(); j++) {
                     System.out.println(lables.get(j));
                 }
-                dataAdapter = new ArrayAdapter<String>(Update.this,
-                        R.layout.spinnerview,R.id.txt_name,lables);
+                dataAdapter = new ArrayAdapter<>(Update.this,
+                        R.layout.spinnerview, R.id.txt_name, lables);
                 spact.setAdapter(dataAdapter);
 
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                return;
+
 
             }
         });
@@ -97,13 +92,14 @@ public class Update extends AppCompatActivity {
           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
               y=parent.getItemAtPosition(position).toString();
               lables = db.getAllLabels(m+"-"+y);
-
+              curr=0.0;
+              curram.setText(" "+curr+"");
               System.out.print(lables.size());
               for (int j = 0; j < lables.size(); j++) {
                   System.out.println(lables.get(j));
               }
-              dataAdapter = new ArrayAdapter<String>(Update.this,
-                      R.layout.spinnerview,R.id.txt_name,lables);
+              dataAdapter = new ArrayAdapter<>(Update.this,
+                      R.layout.spinnerview, R.id.txt_name, lables);
 
 
               spact.setAdapter(dataAdapter);
@@ -113,19 +109,19 @@ public class Update extends AppCompatActivity {
 
           @Override
           public void onNothingSelected(AdapterView<?> parent) {
-              return;
+
           }
       });
 
 
      //   ArrayAdapter<CharSequence>
-        adapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.month_array, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spm.setAdapter(adapter);
 
-                adapter1 = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
                 R.array.year_array, android.R.layout.simple_spinner_item);
 
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -139,6 +135,7 @@ public class Update extends AppCompatActivity {
                 //amount.clear();
                 for(cursor1.moveToFirst(); !cursor1.isAfterLast(); cursor1.moveToNext()){
                     //System.out.println(cursor1.getDouble(0)+"");
+
                     curr=cursor1.getDouble(0);
                     System.out.println(curr);
 //                    System.out.println(currview.getText());
@@ -148,7 +145,7 @@ public class Update extends AppCompatActivity {
 //                        System.out.println(amount.get(j));
 //                    }
                 }
-                currview.setText("Current Amount: " +curr);
+                curram.setText(" "+curr+"");
 
                 //  x=new ArrayAdapter<String>(Update.this,android.R.layout.simple_list_item_1,amount);
                 //x.toString();
@@ -159,13 +156,13 @@ public class Update extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                return;
+
             }
         });
 
     }
 
-    public View.OnClickListener dbButtonsListener = new View.OnClickListener() {
+    private final View.OnClickListener dbButtonsListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
@@ -184,7 +181,7 @@ public class Update extends AppCompatActivity {
                             Toast.makeText(Update.this, "Error", Toast.LENGTH_SHORT).show();
 
                         } else if (resultupdate == 1) {
-                            Toast.makeText(Update.this, "Successfully Updated" + resultupdate, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Update.this, "Successfully Updated" , Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(Update.this, "Multiple", Toast.LENGTH_SHORT).show();
                         }
