@@ -1,4 +1,4 @@
-package com.example.vyas.myapplication;
+package com.example.vyas.expensetracker;
 
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;

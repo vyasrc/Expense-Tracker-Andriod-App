@@ -1,4 +1,4 @@
-package com.example.vyas.myapplication;
+package com.example.vyas.expensetracker;
 
 import android.database.Cursor;
 import android.support.design.widget.TextInputLayout;
@@ -131,7 +131,7 @@ public class Update extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 act=parent.getItemAtPosition(position).toString();
-                Cursor cursor1 = db.getCurrentAmount(act);
+                Cursor cursor1 = db.getCurrentAmount(act,m+"-"+y);
                 //amount.clear();
                 for(cursor1.moveToFirst(); !cursor1.isAfterLast(); cursor1.moveToNext()){
                     //System.out.println(cursor1.getDouble(0)+"");

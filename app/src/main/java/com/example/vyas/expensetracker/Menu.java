@@ -1,4 +1,4 @@
-package com.example.vyas.myapplication;
+package com.example.vyas.expensetracker;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

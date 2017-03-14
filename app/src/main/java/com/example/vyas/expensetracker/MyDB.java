@@ -1,4 +1,4 @@
-package com.example.vyas.myapplication;
+package com.example.vyas.expensetracker;
 
         import android.content.ContentValues;
         import android.content.Context;
@@ -148,10 +148,10 @@ class MyDB extends SQLiteOpenHelper {
         return labels;
     }
 
-    public Cursor getCurrentAmount(String activity){
+    public Cursor getCurrentAmount(String activity,String searchString){
 
         return MyD.rawQuery("SELECT AMOUNT FROM "+TABLE_NAME+" " +
-                "WHERE "+ACTIVITY+"='"+activity+"'",null,null);
+                "WHERE "+ACTIVITY+"='"+activity+"' AND "+DATE+" LIKE '%"+searchString+"'",null,null);
 
     }
 }

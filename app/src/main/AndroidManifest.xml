@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.vyas.myapplication">
+    package="com.example.vyas.expensetracker">
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.vyas.expensetracker.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -27,12 +27,12 @@
 
         </activity>
 
-        <activity android:name=".Insert" />
-        <activity android:name=".Menu" />
-        <activity android:name=".Total" />
-        <activity android:name=".Update" />
-        <activity android:name=".Delete" />
-        <activity android:name=".ChangePass" />
+        <activity android:name="com.example.vyas.expensetracker.Insert" />
+        <activity android:name="com.example.vyas.expensetracker.Menu" />
+        <activity android:name="com.example.vyas.expensetracker.Total" />
+        <activity android:name="com.example.vyas.expensetracker.Update" />
+        <activity android:name="com.example.vyas.expensetracker.Delete" />
+        <activity android:name="com.example.vyas.expensetracker.ChangePass" />
     </application>
 
 </manifest>
