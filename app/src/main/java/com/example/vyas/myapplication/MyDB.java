@@ -12,10 +12,10 @@ package com.example.vyas.myapplication;
         import java.text.SimpleDateFormat;
         import java.util.ArrayList;
         import java.util.Calendar;
+        import java.util.Locale;
 
 
-
-  //Created by VYAS on 27/01/2017.
+//Created by VYAS on 27/01/2017.
 
 class MyDB extends SQLiteOpenHelper {
             private static final String DBNAME="mydb.db";
@@ -66,7 +66,7 @@ class MyDB extends SQLiteOpenHelper {
 
 
                 Calendar c = Calendar.getInstance();
-                SimpleDateFormat sf= new SimpleDateFormat("dd-MMM-yyyy");
+                SimpleDateFormat sf= new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
 
                 //System.out.println(c.getTime());
                 //System.out.println("#####################");
