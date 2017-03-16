@@ -2,6 +2,7 @@
   <dictionary name="VYAS">
     <words>
       <w>aaak</w>
+      <w>asnim</w>
       <w>btinsert</w>
       <w>btnchange</w>
       <w>btncreate</w>
@@ -21,6 +22,7 @@
       <w>etactivity</w>
       <w>etamount</w>
       <w>etfname</w>
+      <w>expensetracker</w>
       <w>lables</w>
       <w>linearbottom</w>
       <w>lineartop</w>

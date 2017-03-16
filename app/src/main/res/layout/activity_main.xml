@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:background="@android:color/darker_gray"
-    tools:context="com.example.vyas.expensetracker.MainActivity"
+    tools:context="com.asnim.vyas.myapplication.MainActivity"
     android:weightSum="1"
     android:baselineAligned="false"
 
