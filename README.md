@@ -1,5 +1,6 @@
-# Expense_Tracker                                                              
-An Android application for meeting day to day finance tracking, with user authentication.                                                   
+<img src="https://github.com/vyasrc/Expense-Tracker-Andriod-App/blob/master/icon.png" width="60" height="60" ></img>                       
+# Expense_Tracker  
+An Android application for meeting day to day finance tracking, with user authentication.                                                                                                     
 ### Created 6 activities :-                                                                                                                   
 * MainActivity - The starting page where you can enter the login credentials or signup with new credentials.
 * ChangePass - The user can change the password of the account.
@@ -13,4 +14,3 @@ An Android application for meeting day to day finance tracking, with user authen
 ### Databse :-
 * Used SQLite Databse to store the data locally on the phone.
 
-<img src="https://github.com/vyasrc/Expense-Tracker-Andriod-App/blob/master/icon.png" width="75" height="75" />
