@@ -14,9 +14,9 @@ An Android application for meeting day to day finance tracking, with user authen
 ### Databse :-
 * Used SQLite Databse to store the data locally on the phone.
 
-![](https://github.com/vyasrc/Expense-Tracker-Andriod-App/blob/master/Screenshot_20191219-205600_Expense%20Tracker.jpg)                     ![](https://github.com/vyasrc/Expense-Tracker-Andriod-App/blob/master/Screenshot_20191219-205533_Expense%20Tracker.jpg)
+![](https://github.com/vyasrc/Expense-Tracker-Andriod-App/blob/master/Screenshot_20191219-205600_Expense%20Tracker.jpg) 
+![](https://github.com/vyasrc/Expense-Tracker-Andriod-App/blob/master/Screenshot_20191219-205533_Expense%20Tracker.jpg) 
 ![](https://github.com/vyasrc/Expense-Tracker-Andriod-App/blob/master/Screenshot_20191219-205439_Expense%20Tracker.jpg)
-![](https://github.com/vyasrc/Expense-Tracker-Andriod-App/blob/master/Screenshot_20191219-205428_Expense%20Tracker.jpg)
 ![](https://github.com/vyasrc/Expense-Tracker-Andriod-App/blob/master/Screenshot_20191219-205747_Expense%20Tracker.jpg)
 ![](https://github.com/vyasrc/Expense-Tracker-Andriod-App/blob/master/Screenshot_20191219-205805_Expense%20Tracker.jpg)
 
