@@ -1,5 +1,5 @@
 <img src="https://github.com/vyasrc/Expense-Tracker-Andriod-App/blob/master/icon.png" width="60" height="60" ></img>                       
-# Expense_Tracker  
+# Expense-Tracker-Android-App  
 An Android application for meeting day to day finance tracking, with user authentication.                                                                                                     
 ### Created 6 activities :-                                                                                                                   
 * MainActivity - The starting page where you can enter the login credentials or signup with new credentials.
